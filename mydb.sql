@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-03-2017 a las 18:16:14
+-- Tiempo de generación: 21-03-2017 a las 09:12:39
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 7.1.1
 
@@ -37,7 +37,9 @@ CREATE TABLE `administrador` (
 --
 
 INSERT INTO `administrador` (`idAdministrador`, `usuario`, `clave`) VALUES
-(2, 'Kevin', 'Arias');
+(1, 'Kevin', '678'),
+(2, 'Simon', ''),
+(3, 'Angie', '123');
 
 -- --------------------------------------------------------
 
@@ -56,12 +58,9 @@ CREATE TABLE `artista` (
 --
 
 INSERT INTO `artista` (`idArtista`, `usuario`, `clave`) VALUES
-(5, 'Kevin', '123'),
-(6, 'kevin1', '123'),
-(7, 'lol', '123'),
-(8, 'loli', '123'),
-(9, 'Steven', '43'),
-(10, 'Simon', '41');
+(1, 'Kevin', '2'),
+(2, 'Simon', '1'),
+(3, 'Angie', '1');
 
 -- --------------------------------------------------------
 
@@ -95,9 +94,9 @@ CREATE TABLE `cliente` (
 --
 
 INSERT INTO `cliente` (`idCliente`, `usuario`, `clave`, `ubicacion`, `formaPago`) VALUES
-(4, 'Kevin', '12', 'Bogotá', 'Tarjeta'),
-(5, 'Kevin1', '123', 'Bogotá', 'Efectivo'),
-(7, 'Kevin23', '1', 'lol', 'Tarjeta');
+(1, 'Kevin', '5', 'Bosa', 'Efectivo'),
+(2, 'Simon', '12', 'Usme', 'Tarjeta'),
+(3, 'Angie', '12', 'Granja', 'Efectivo');
 
 -- --------------------------------------------------------
 
@@ -115,6 +114,14 @@ CREATE TABLE `estampa` (
   `Artista_idArtista` int(11) NOT NULL,
   `Tema_idTema` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `estampa`
+--
+
+INSERT INTO `estampa` (`idEstampa`, `nombre`, `descripcion`, `imagenes`, `rating`, `popularidad`, `Artista_idArtista`, `Tema_idTema`) VALUES
+(0, 'Chat', 'Globitos del chat.', 'chat.png', '4', '12', 1, 1),
+(1, 'Envelope', 'Un breve mensajesito.', 'envelope.png', '3', '10', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -137,6 +144,13 @@ CREATE TABLE `tema` (
   `idTema` int(11) NOT NULL,
   `Descripcion` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Volcado de datos para la tabla `tema`
+--
+
+INSERT INTO `tema` (`idTema`, `Descripcion`) VALUES
+(1, 'animal');
 
 -- --------------------------------------------------------
 
@@ -187,8 +201,10 @@ ALTER TABLE `cliente`
 --
 ALTER TABLE `estampa`
   ADD PRIMARY KEY (`idEstampa`),
+  ADD UNIQUE KEY `idEstampa_2` (`idEstampa`),
   ADD KEY `fk_Estampa_Artista1_idx` (`Artista_idArtista`),
-  ADD KEY `Tema_idTema` (`Tema_idTema`);
+  ADD KEY `Tema_idTema` (`Tema_idTema`),
+  ADD KEY `idEstampa` (`idEstampa`);
 
 --
 -- Indices de la tabla `estampasventas`
@@ -219,12 +235,12 @@ ALTER TABLE `venta`
 -- AUTO_INCREMENT de la tabla `administrador`
 --
 ALTER TABLE `administrador`
-  MODIFY `idAdministrador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `idAdministrador` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `artista`
 --
 ALTER TABLE `artista`
-  MODIFY `idArtista` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `idArtista` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `camiseta`
 --
@@ -234,12 +250,12 @@ ALTER TABLE `camiseta`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `idCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `idCliente` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
 -- AUTO_INCREMENT de la tabla `tema`
 --
 ALTER TABLE `tema`
-  MODIFY `idTema` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idTema` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT de la tabla `venta`
 --
@@ -250,30 +266,25 @@ ALTER TABLE `venta`
 --
 
 --
--- Filtros para la tabla `camiseta`
---
-ALTER TABLE `camiseta`
-  ADD CONSTRAINT `camiseta_ibfk_1` FOREIGN KEY (`idCamiseta`) REFERENCES `venta` (`Camiseta_idCamiseta`) ON DELETE NO ACTION ON UPDATE NO ACTION;
-
---
 -- Filtros para la tabla `estampa`
 --
 ALTER TABLE `estampa`
-  ADD CONSTRAINT `estampa_ibfk_1` FOREIGN KEY (`idEstampa`) REFERENCES `estampasventas` (`idEstampa`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `estampa_ibfk_2` FOREIGN KEY (`Artista_idArtista`) REFERENCES `artista` (`idArtista`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  ADD CONSTRAINT `estampa_ibfk_3` FOREIGN KEY (`Tema_idTema`) REFERENCES `tema` (`idTema`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `estampa_ibfk_1` FOREIGN KEY (`Artista_idArtista`) REFERENCES `artista` (`idArtista`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `estampa_ibfk_2` FOREIGN KEY (`Tema_idTema`) REFERENCES `tema` (`idTema`);
 
 --
 -- Filtros para la tabla `estampasventas`
 --
 ALTER TABLE `estampasventas`
-  ADD CONSTRAINT `estampasventas_ibfk_1` FOREIGN KEY (`idVenta`) REFERENCES `venta` (`idVenta`) ON DELETE NO ACTION ON UPDATE NO ACTION;
+  ADD CONSTRAINT `estampasventas_ibfk_1` FOREIGN KEY (`idVenta`) REFERENCES `venta` (`idVenta`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `estampasventas_ibfk_2` FOREIGN KEY (`idEstampa`) REFERENCES `estampa` (`idEstampa`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
 -- Filtros para la tabla `venta`
 --
 ALTER TABLE `venta`
-  ADD CONSTRAINT `venta_ibfk_1` FOREIGN KEY (`Cliente_idCliente`) REFERENCES `cliente` (`idCliente`);
+  ADD CONSTRAINT `venta_ibfk_1` FOREIGN KEY (`Cliente_idCliente`) REFERENCES `cliente` (`idCliente`) ON DELETE NO ACTION ON UPDATE NO ACTION,
+  ADD CONSTRAINT `venta_ibfk_2` FOREIGN KEY (`Camiseta_idCamiseta`) REFERENCES `camiseta` (`idCamiseta`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
