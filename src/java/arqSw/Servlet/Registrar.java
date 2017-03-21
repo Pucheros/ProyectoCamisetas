@@ -1,7 +1,9 @@
 package arqSw.Servlet;
 
+import arqSw.DAO.AdministradorDAO;
 import arqSw.DAO.ArtistaDAO;
 import arqSw.DAO.ClienteDAO;
+import arqSw.Hibernate.Administrador;
 import arqSw.Hibernate.Artista;
 import arqSw.Hibernate.Cliente;
 import java.io.IOException;
@@ -59,9 +61,20 @@ public class Registrar extends HttpServlet {
                 id = cliDAO.guardaCliente(cliente);
                 break;
             }
+            case 3: {
+                AdministradorDAO admDAO = new AdministradorDAO();
+                Administrador adm = new Administrador(name, pass);
+                id = admDAO.guardaAdministrador(adm);
+                break;
+            }
+
         }
-        if (id != 0) {            
-            response.sendRedirect("index.html");
+        if (id != 0) {
+            if (tForm != 3) {
+                response.sendRedirect("index.html");
+            } else {
+                response.sendRedirect("Administrador/indexAdm.jsp");
+            }
         }
     }
 

@@ -85,7 +85,7 @@ public class Ingresar extends HttpServlet {
                             session.setAttribute("id", a.getIdAdministrador());
                             session.setAttribute("name", name);
                             session.setAttribute("type", "Administrador");
-                            response.sendRedirect("Administrador/indexAdm.jsp");
+                            response.sendRedirect("indexAdm.jsp");
                         } else {
                             response.sendRedirect("Administrador/IngresarAdministrador.jsp");
                         }
