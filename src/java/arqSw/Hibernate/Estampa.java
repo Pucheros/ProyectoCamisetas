@@ -11,7 +11,7 @@ import java.util.Set;
 public class Estampa  implements java.io.Serializable {
 
 
-     private int idEstampa;
+     private Integer idEstampa;
      private Tema tema;
      private Artista artista;
      private String nombre;
@@ -25,13 +25,11 @@ public class Estampa  implements java.io.Serializable {
     }
 
 	
-    public Estampa(int idEstampa, Tema tema, Artista artista) {
-        this.idEstampa = idEstampa;
+    public Estampa(Tema tema, Artista artista) {        
         this.tema = tema;
         this.artista = artista;
     }
-    public Estampa(int idEstampa, Tema tema, Artista artista, String nombre, String descripcion, String imagenes, String rating, String popularidad, Set<Estampasventas> estampasventases) {
-       this.idEstampa = idEstampa;
+    public Estampa(Tema tema, Artista artista, String nombre, String descripcion, String imagenes, String rating, String popularidad, Set<Estampasventas> estampasventases) {
        this.tema = tema;
        this.artista = artista;
        this.nombre = nombre;
@@ -47,7 +45,7 @@ public class Estampa  implements java.io.Serializable {
         return this.idEstampa;
     }
     
-    public void setIdEstampa(int idEstampa) {
+    public void setIdEstampa(Integer idEstampa) {
         this.idEstampa = idEstampa;
     }
     public Tema getTema() {
