@@ -59,6 +59,7 @@ public class Ingresar extends HttpServlet {
                             session.setAttribute("type", "Artista");
                             response.sendRedirect("Artista/indexArt.jsp");
                         } else {
+                            response.sendRedirect("Artista/IngresarArtista.jsp");
                         }
                     }
                 }
@@ -72,6 +73,7 @@ public class Ingresar extends HttpServlet {
                             session.setAttribute("type", "Cliente");
                             response.sendRedirect("Cliente/indexCli.jsp");
                         } else {
+                            response.sendRedirect("Cliente/IngresarCliente.jsp");
                         }
                     }
                 }
@@ -85,6 +87,7 @@ public class Ingresar extends HttpServlet {
                             session.setAttribute("type", "Administrador");
                             response.sendRedirect("Administrador/indexAdm.jsp");
                         } else {
+                            response.sendRedirect("Administrador/IngresarAdministrador.jsp");
                         }
                     }
                 }

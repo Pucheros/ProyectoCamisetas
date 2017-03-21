@@ -33,7 +33,7 @@ public class ArtistaDAO {
         } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
-        } finally {
+        } finally { sesion.close();
             
         }
     }
@@ -46,7 +46,7 @@ public class ArtistaDAO {
         } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
-        } finally {
+        } finally { sesion.close();
             
         }
     }
@@ -56,7 +56,7 @@ public class ArtistaDAO {
         try {
             iniciaOperacion();
             artista = (Artista) sesion.get(Artista.class, idArtista);
-        } finally {
+        } finally { sesion.close();
             
         }
 
@@ -69,7 +69,7 @@ public class ArtistaDAO {
         try {
             iniciaOperacion();
             listaArtistas = sesion.createQuery("from Artista").list();
-        } finally {
+        } finally { sesion.close();
             
         }
 

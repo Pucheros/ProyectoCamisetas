@@ -22,7 +22,7 @@ public class TemaDAO {
         } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
-        } finally {
+        } finally { sesion.close();
             
         }
         return id;
@@ -36,7 +36,7 @@ public class TemaDAO {
         } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
-        } finally {
+        } finally { sesion.close();
             
         }
     }
@@ -49,7 +49,7 @@ public class TemaDAO {
         } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
-        } finally {
+        } finally { sesion.close();
             
         }
     }
@@ -59,7 +59,7 @@ public class TemaDAO {
         try {
             iniciaOperacion();
             tema = (Tema) sesion.get(Tema.class, idTema);
-        } finally {
+        } finally { sesion.close();
             
         }
 
@@ -72,7 +72,7 @@ public class TemaDAO {
         try {
             iniciaOperacion();
             listaTemas = sesion.createQuery("from Tema").list();
-        } finally {
+        } finally { sesion.close();
             
         }
 

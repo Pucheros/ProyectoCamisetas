@@ -22,7 +22,7 @@ public class ClienteDAO {
         } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
-        } finally {
+        } finally { sesion.close();
             
         }
         return id;
@@ -36,7 +36,7 @@ public class ClienteDAO {
         } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
-        } finally {
+        } finally { sesion.close();
             
         }
     }
@@ -49,7 +49,7 @@ public class ClienteDAO {
         } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
-        } finally {
+        } finally { sesion.close();
             
         }
     }
@@ -59,8 +59,7 @@ public class ClienteDAO {
         try {
             iniciaOperacion();
             cliente = (Cliente) sesion.get(Cliente.class, idCliente);
-        } finally {
-            
+        } finally { sesion.close();
         }
 
         return cliente;
@@ -72,7 +71,7 @@ public class ClienteDAO {
         try {
             iniciaOperacion();
             listaClientes = sesion.createQuery("from Cliente").list();
-        } finally {
+        } finally { sesion.close();
             
         }
 

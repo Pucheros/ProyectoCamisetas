@@ -22,7 +22,7 @@ public class VentaDAO {
         } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
-        } finally {
+        } finally { sesion.close();
             
         }
         return id;
@@ -36,7 +36,7 @@ public class VentaDAO {
         } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
-        } finally {
+        } finally { sesion.close();
             
         }
     }
@@ -49,7 +49,7 @@ public class VentaDAO {
         } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
-        } finally {
+        } finally { sesion.close();
             
         }
     }
@@ -59,7 +59,7 @@ public class VentaDAO {
         try {
             iniciaOperacion();
             venta = (Venta) sesion.get(Venta.class, idVenta);
-        } finally {
+        } finally { sesion.close();
             
         }
 
@@ -72,7 +72,7 @@ public class VentaDAO {
         try {
             iniciaOperacion();
             listaVentas = sesion.createQuery("from Venta").list();
-        } finally {
+        } finally { sesion.close();
             
         }
 

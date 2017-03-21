@@ -28,21 +28,11 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "CambiarClave", urlPatterns = {"/CambiarClave"})
 public class CambiarClave extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
        
     }
 
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -61,20 +51,23 @@ public class CambiarClave extends HttpServlet {
         int id = Integer.parseInt(session.getAttribute("id").toString());
                
         if (tipo.equals("Cliente")) {
-            ClienteDAO art = new ClienteDAO();
-            Cliente Adm = art.obtenCliente(id);
-            Adm.setClave(pass);
-            art.actualizaCliente(Adm);
+            ClienteDAO cliD = new ClienteDAO();
+            Cliente cli = cliD.obtenCliente(id);
+            cli.setClave(pass);
+            cliD.actualizaCliente(cli);
+            response.sendRedirect("Cliente/indexCli.jsp");
         } else if (tipo.equals("Artista")) {
             ArtistaDAO art = new ArtistaDAO();
             Artista Adm = art.obtenArtista(id);
             Adm.setClave(pass);
             art.actualizaArtista(Adm);
+            response.sendRedirect("Artista/indexArt.jsp");
         } else if (tipo.equals("Administrador")) {
             AdministradorDAO art = new AdministradorDAO();
             Administrador Adm = art.obtenAdministrador(id);
             Adm.setClave(pass);
             art.actualizaAdministrador(Adm);
+            response.sendRedirect("Administrador/indexAdm.jsp");
         }
 
     }

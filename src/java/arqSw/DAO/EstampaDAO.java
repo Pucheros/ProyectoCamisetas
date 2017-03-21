@@ -22,7 +22,7 @@ public class EstampaDAO {
         } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
-        } finally {
+        } finally { sesion.close();
             
         }
         return id;
@@ -36,7 +36,7 @@ public class EstampaDAO {
         } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
-        } finally {
+        } finally { sesion.close();
             
         }
     }
@@ -49,7 +49,7 @@ public class EstampaDAO {
         } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
-        } finally {
+        } finally { sesion.close();
             
         }
     }
@@ -59,7 +59,7 @@ public class EstampaDAO {
         try {
             iniciaOperacion();
             estampa = (Estampa) sesion.get(Estampa.class, idEstampa);
-        } finally {
+        } finally { sesion.close();
             
         }
 
@@ -72,7 +72,7 @@ public class EstampaDAO {
         try {
             iniciaOperacion();
             listaEstampas = sesion.createQuery("from Estampa").list();
-        } finally {
+        } finally { sesion.close();
             
         }
 

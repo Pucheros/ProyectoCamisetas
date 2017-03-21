@@ -22,7 +22,7 @@ public class CamisetaDAO {
         } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
-        } finally {
+        } finally { sesion.close();
             
         }
         return id;
@@ -36,7 +36,7 @@ public class CamisetaDAO {
         } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
-        } finally {
+        } finally { sesion.close();
             
         }
     }
@@ -49,7 +49,7 @@ public class CamisetaDAO {
         } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
-        } finally {
+        } finally { sesion.close();
             
         }
     }
@@ -59,7 +59,7 @@ public class CamisetaDAO {
         try {
             iniciaOperacion();
             camiseta = (Camiseta) sesion.get(Camiseta.class, idCamiseta);
-        } finally {
+        } finally { sesion.close();
             
         }
 
@@ -72,7 +72,7 @@ public class CamisetaDAO {
         try {
             iniciaOperacion();
             listaCamisetas = sesion.createQuery("from Camiseta").list();
-        } finally {
+        } finally { sesion.close();
             
         }
 

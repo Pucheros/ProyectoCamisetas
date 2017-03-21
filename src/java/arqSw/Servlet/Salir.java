@@ -17,7 +17,7 @@ public class Salir extends HttpServlet {
             throws ServletException, IOException {
         response.setContentType("text/html");
         HttpSession session = request.getSession();
-        session.invalidate();
+        session.invalidate();        
         request.getRequestDispatcher("index.html").include(request, response);
     }
 

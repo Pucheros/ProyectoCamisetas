@@ -22,7 +22,7 @@ public class AdministradorDAO {
         } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
-        } finally {
+        } finally { sesion.close();
             
         }
         return id;
@@ -36,7 +36,7 @@ public class AdministradorDAO {
         } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
-        } finally {
+        } finally { sesion.close();
             
         }
     }
@@ -49,8 +49,8 @@ public class AdministradorDAO {
         } catch (HibernateException he) {
             manejaExcepcion(he);
             throw he;
-        } finally {
-            
+        } finally { sesion.close();
+            sesion.close();
         }
     }
 
@@ -59,7 +59,7 @@ public class AdministradorDAO {
         try {
             iniciaOperacion();
             administrador = (Administrador) sesion.get(Administrador.class, idAdministrador);
-        } finally {
+        } finally { sesion.close();
             
         }
 
@@ -72,7 +72,7 @@ public class AdministradorDAO {
         try {
             iniciaOperacion();
             listaAdministradors = sesion.createQuery("from Administrador").list();
-        } finally {
+        } finally { sesion.close();
             
         }
         return listaAdministradors;
@@ -86,23 +86,7 @@ public class AdministradorDAO {
     private void manejaExcepcion(HibernateException he) throws HibernateException {
         tx.rollback();
         throw new HibernateException("Ocurrió un error en la capa de acceso a datos", he);
-    }
-
-    public void updatePass(int AdministradorID, String pass) {
-        Transaction tx = null;
-        try {
-            iniciaOperacion();
-            Administrador adm = (Administrador) sesion.get(Administrador.class, AdministradorID);
-            adm.setClave(pass);
-            sesion.update(adm);
-            tx.commit();
-        } catch (HibernateException e) {
-            if (tx != null) {
-                tx.rollback();
-            }
-            e.printStackTrace();
-        } 
-    }
-    
+    }  
+        
 
 }
