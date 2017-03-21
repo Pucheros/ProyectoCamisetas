@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 20/03/2017 08:42:48 PM by Hibernate Tools 3.6.0 -->
+<hibernate-mapping>
+    <class name="arqSw.Hibernate.Estampasventas" table="estampasventas" catalog="mydb">
+        <composite-id name="id" class="arqSw.Hibernate.EstampasventasId">
+            <key-property name="idVenta" type="int">
+                <column name="idVenta" />
+            </key-property>
+            <key-property name="idEstampa" type="int">
+                <column name="idEstampa" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="venta" class="arqSw.Hibernate.Venta" update="false" insert="false" fetch="select">
+            <column name="idVenta" not-null="true" />
+        </many-to-one>
+        <many-to-one name="estampa" class="arqSw.Hibernate.Estampa" update="false" insert="false" fetch="select">
+            <column name="idEstampa" not-null="true" />
+        </many-to-one>
+    </class>
+</hibernate-mapping>
