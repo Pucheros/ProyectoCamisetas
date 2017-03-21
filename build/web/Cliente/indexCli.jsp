@@ -2,6 +2,7 @@
 <html>
 
     <head>
+        <title>Cliente</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
@@ -16,7 +17,18 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12 text-right">
-                        <a href="../Salir" class="active btn btn-default btn-lg" data-toggle="modal">Salir</a>
+                        <div class="btn-group btn-group-lg">
+                            <a class="btn btn-success dropdown-toggle" data-toggle="dropdown"> Opciones <span class="fa fa-caret-down"></span></a>
+                            <ul class="dropdown-menu" role="menu">
+                                <li>
+                                    <a href="../setPass.jsp" class="active btn btn-lg btn-default" data-toggle="modal">Cambiar Contraseña</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="../Salir" class="active btn btn-lg btn-danger" data-toggle="modal">Salir</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>

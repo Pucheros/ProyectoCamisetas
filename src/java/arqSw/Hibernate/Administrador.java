@@ -1,5 +1,5 @@
 package arqSw.Hibernate;
-// Generated 19/03/2017 10:22:30 PM by Hibernate Tools 3.6.0
+// Generated 20/03/2017 08:42:47 PM by Hibernate Tools 3.6.0
 
 
 

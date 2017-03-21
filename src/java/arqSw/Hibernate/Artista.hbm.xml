@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 19/03/2017 10:22:31 PM by Hibernate Tools 3.6.0 -->
+<!-- Generated 20/03/2017 08:42:48 PM by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="arqSw.Hibernate.Artista" table="artista" catalog="mydb">
         <id name="idArtista" type="java.lang.Integer">
@@ -9,7 +9,7 @@
             <generator class="identity" />
         </id>
         <property name="usuario" type="string">
-            <column name="usuario" length="45" />
+            <column name="usuario" length="45" unique="true" />
         </property>
         <property name="clave" type="string">
             <column name="clave" length="45" />

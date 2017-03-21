@@ -1,16 +1,13 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
 "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 19/03/2017 10:22:31 PM by Hibernate Tools 3.6.0 -->
+<!-- Generated 20/03/2017 08:42:48 PM by Hibernate Tools 3.6.0 -->
 <hibernate-mapping>
     <class name="arqSw.Hibernate.Camiseta" table="camiseta" catalog="mydb">
         <id name="idCamiseta" type="java.lang.Integer">
             <column name="idCamiseta" />
-            <generator class="foreign">
-                <param name="property">venta</param>
-            </generator>
+            <generator class="identity" />
         </id>
-        <one-to-one name="venta" class="arqSw.Hibernate.Venta" constrained="true"></one-to-one>
         <property name="talla" type="string">
             <column name="talla" length="45" />
         </property>
@@ -20,5 +17,11 @@
         <property name="material" type="string">
             <column name="material" length="45" />
         </property>
+        <set name="ventas" table="venta" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="Camiseta_idCamiseta" not-null="true" />
+            </key>
+            <one-to-many class="arqSw.Hibernate.Venta" />
+        </set>
     </class>
 </hibernate-mapping>

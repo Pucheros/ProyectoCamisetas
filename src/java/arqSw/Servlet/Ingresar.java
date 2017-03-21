@@ -33,64 +33,63 @@ public class Ingresar extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-        
+
         String name = request.getParameter("usuario");
         String clave = request.getParameter("clave");
         int tForm = Integer.parseInt(request.getParameter("tForm"));
-        switch (tForm) {
-            case 1: {
-                ArtistaDAO admDAO = new ArtistaDAO();
-                List<Artista> admP = admDAO.obtenListaArtistas();
-                for (Artista a : admP) {
-                    if (name.equals(a.getUsuario()) && clave.equals(a.getClave())) {
-                        HttpSession session = request.getSession();
-                        session.setAttribute("id", a.getIdArtista());
-                        session.setAttribute("name", name);
-                        session.setAttribute("type", "Artista");
-                        request.getRequestDispatcher("Artista/indexArt.jsp").include(request, response);
-                    } else {
-                        request.getSession().setAttribute("stat", null);
-                        request.getSession().setAttribute("stat", "Ingreso fallido");
-                        request.getRequestDispatcher("Artista/IngresarArtista.jsp").include(request, response);
+        HttpSession session = request.getSession();
+        String tipo = (String) session.getAttribute("type");
+        if (session.getAttribute("type") != null) {
+            if (tipo.equals("Cliente")) {
+                response.sendRedirect("Cliente/indexCli.jsp");
+            } else if (tipo.equals("Artista")) {
+                response.sendRedirect("Artista/indexArt.jsp");
+            } else if (tipo.equals("Administrador")) {
+                response.sendRedirect("Administrador/indexAdm.jsp");
+            }
+        } else {
+            switch (tForm) {
+                case 1: {
+                    ArtistaDAO admDAO = new ArtistaDAO();
+                    List<Artista> admP = admDAO.obtenListaArtistas();
+                    for (Artista a : admP) {
+                        if (name.equals(a.getUsuario()) && clave.equals(a.getClave())) {
+                            session.setAttribute("id", a.getIdArtista());
+                            session.setAttribute("name", name);
+                            session.setAttribute("type", "Artista");
+                            response.sendRedirect("Artista/indexArt.jsp");
+                        } else {
+                        }
                     }
                 }
-            }
-            case 2: {
-                ClienteDAO cliDAO = new ClienteDAO();
-                List<Cliente> cliP = cliDAO.obtenListaClientes();
-                for (Cliente a : cliP) {
-                    if (name.equals(a.getUsuario()) && clave.equals(a.getClave())) {
-                        HttpSession session = request.getSession();
-                        session.setAttribute("id", a.getIdCliente());
-                        session.setAttribute("name", name);
-                        session.setAttribute("type", "Cliente");
-                        request.getRequestDispatcher("Cliente/indexCli.jsp").include(request, response);
-                    } else {
-                        request.getSession().setAttribute("stat2", null);
-                        request.getSession().setAttribute("stat2", "Ingreso fallido");
-                        response.sendRedirect("Cliente/IngresarCliente.jsp");
+                case 2: {
+                    ClienteDAO cliDAO = new ClienteDAO();
+                    List<Cliente> cliP = cliDAO.obtenListaClientes();
+                    for (Cliente a : cliP) {
+                        if (name.equals(a.getUsuario()) && clave.equals(a.getClave())) {
+                            session.setAttribute("id", a.getIdCliente());
+                            session.setAttribute("name", name);
+                            session.setAttribute("type", "Cliente");
+                            response.sendRedirect("Cliente/indexCli.jsp");
+                        } else {
+                        }
                     }
                 }
-            }
-            case 3: {
-                AdministradorDAO admDAO = new AdministradorDAO();
-                List<Administrador> admP = admDAO.obtenListaAdministradores();
-                for (Administrador a : admP) {
-                    if (name.equals(a.getUsuario()) && clave.equals(a.getClave())) {
-                        HttpSession session = request.getSession();
-                        session.setAttribute("id", a.getIdAdministrador());
-                        session.setAttribute("name", name);
-                        session.setAttribute("type", "Administrador");
-                        request.getRequestDispatcher("Administrador/indexAdm.jsp").include(request, response);
-                    } else {
-                        request.getSession().setAttribute("stat3", null);
-                        request.getSession().setAttribute("stat3", "Ingreso fallido");
-                        response.sendRedirect("Administrador/IngresarAdministrador.jsp");
+                case 3: {
+                    AdministradorDAO admDAO = new AdministradorDAO();
+                    List<Administrador> admP = admDAO.obtenListaAdministradores();
+                    for (Administrador a : admP) {
+                        if (name.equals(a.getUsuario()) && clave.equals(a.getClave())) {
+                            session.setAttribute("id", a.getIdAdministrador());
+                            session.setAttribute("name", name);
+                            session.setAttribute("type", "Administrador");
+                            response.sendRedirect("Administrador/indexAdm.jsp");
+                        } else {
+                        }
                     }
                 }
             }
         }
-
     }
 
     @Override

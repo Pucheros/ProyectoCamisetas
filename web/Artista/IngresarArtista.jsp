@@ -29,14 +29,8 @@
                 <div class="row">
                     <div class="col-md-12">
                         <div class="page-header">
-                            <%
-                                String stat = null;
-                                stat = (String) session.getAttribute("stat2");
-                                if (stat == null) {
-                                    stat = "Ingresar Administrador";
-                                }
-                            %>
-                            <h1><%=stat%>
+                            
+                            <h1>Ingresar Artista
                                 <small>Ingrese sus datos</small>
                             </h1>
                         </div>

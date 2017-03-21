@@ -28,15 +28,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="page-header">
-                            <%                               
-                                String stat = null;
-                                stat = (String) session.getAttribute("stat2");
-                                if (stat == null) {
-                                    stat = "Ingresar Cliente";
-                                }
-                            %>
-                            <h1><%=stat%>
+                        <div class="page-header">                           
+                            <h1>Ingresar Cliente
                                 <small>Ingrese sus datos</small>
                             </h1>
                         </div>

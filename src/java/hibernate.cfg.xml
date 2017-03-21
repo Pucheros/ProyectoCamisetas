@@ -9,12 +9,13 @@
     <property name="hibernate.show_sql">true</property>
     <property name="hibernate.current_session_context_class">thread</property>
     <property name="hibernate.query.factory_class">org.hibernate.hql.classic.ClassicQueryTranslatorFactory</property>
-    <mapping resource="arqSw/Hibernate/Venta.hbm.xml"/>
-    <mapping resource="arqSw/Hibernate/Cliente.hbm.xml"/>
-    <mapping resource="arqSw/Hibernate/Camiseta.hbm.xml"/>
-    <mapping resource="arqSw/Hibernate/Administrador.hbm.xml"/>
-    <mapping resource="arqSw/Hibernate/Tema.hbm.xml"/>
-    <mapping resource="arqSw/Hibernate/Artista.hbm.xml"/>
     <mapping resource="arqSw/Hibernate/Estampa.hbm.xml"/>
+    <mapping resource="arqSw/Hibernate/Cliente.hbm.xml"/>
+    <mapping resource="arqSw/Hibernate/Tema.hbm.xml"/>
+    <mapping resource="arqSw/Hibernate/Camiseta.hbm.xml"/>
+    <mapping resource="arqSw/Hibernate/Artista.hbm.xml"/>
+    <mapping resource="arqSw/Hibernate/Administrador.hbm.xml"/>
+    <mapping resource="arqSw/Hibernate/Estampasventas.hbm.xml"/>
+    <mapping resource="arqSw/Hibernate/Venta.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>

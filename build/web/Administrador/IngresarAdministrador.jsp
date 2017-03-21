@@ -30,14 +30,8 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="page-header">
-                            <%
-                                String stat = (String) session.getAttribute("stat3"); 
-                                if (stat == null){
-                                    stat = "Ingresar Administrador";
-                                }              
-                            %>
-                            <h1><%=stat%>
+                        <div class="page-header">                    
+                            <h1>Ingresar Administrador
                                 <small>Ingrese sus datos</small>
                             </h1>
                         </div>
