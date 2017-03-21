@@ -110,7 +110,6 @@ CREATE TABLE `estampa` (
   `nombre` varchar(45) DEFAULT NULL,
   `descripcion` varchar(45) DEFAULT NULL,
   `imagenes` varchar(45) DEFAULT NULL,
-  `tema` varchar(45) DEFAULT NULL,
   `rating` varchar(45) DEFAULT NULL,
   `popularidad` varchar(45) DEFAULT NULL,
   `Artista_idArtista` int(11) NOT NULL,

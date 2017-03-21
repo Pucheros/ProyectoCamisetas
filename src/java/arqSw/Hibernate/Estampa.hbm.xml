@@ -22,10 +22,7 @@
         </property>
         <property name="imagenes" type="string">
             <column name="imagenes" length="45" />
-        </property>
-        <property name="tema_1" type="string">
-            <column name="tema" length="45" />
-        </property>
+        </property>        
         <property name="rating" type="string">
             <column name="rating" length="45" />
         </property>

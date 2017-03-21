@@ -16,8 +16,7 @@ public class Estampa  implements java.io.Serializable {
      private Artista artista;
      private String nombre;
      private String descripcion;
-     private String imagenes;
-     private String tema_1;
+     private String imagenes;     
      private String rating;
      private String popularidad;
      private Set<Estampasventas> estampasventases = new HashSet<Estampasventas>(0);
@@ -31,14 +30,14 @@ public class Estampa  implements java.io.Serializable {
         this.tema = tema;
         this.artista = artista;
     }
-    public Estampa(int idEstampa, Tema tema, Artista artista, String nombre, String descripcion, String imagenes, String tema_1, String rating, String popularidad, Set<Estampasventas> estampasventases) {
+    public Estampa(int idEstampa, Tema tema, Artista artista, String nombre, String descripcion, String imagenes, String rating, String popularidad, Set<Estampasventas> estampasventases) {
        this.idEstampa = idEstampa;
        this.tema = tema;
        this.artista = artista;
        this.nombre = nombre;
        this.descripcion = descripcion;
        this.imagenes = imagenes;
-       this.tema_1 = tema_1;
+       
        this.rating = rating;
        this.popularidad = popularidad;
        this.estampasventases = estampasventases;
@@ -85,14 +84,7 @@ public class Estampa  implements java.io.Serializable {
     
     public void setImagenes(String imagenes) {
         this.imagenes = imagenes;
-    }
-    public String getTema_1() {
-        return this.tema_1;
-    }
-    
-    public void setTema_1(String tema_1) {
-        this.tema_1 = tema_1;
-    }
+    }   
     public String getRating() {
         return this.rating;
     }
