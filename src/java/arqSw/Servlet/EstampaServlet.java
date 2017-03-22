@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "EstampaServlet", urlPatterns = {"/EstampaServlet"})
 public class EstampaServlet extends HttpServlet {
@@ -25,18 +26,18 @@ public class EstampaServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+
+        EstampaDAO estDAO = new EstampaDAO();
+        List<Estampa> listaEstampas = estDAO.obtenListaEstampas();
+        request.setAttribute("listaEstampas", listaEstampas);
+        request.getRequestDispatcher("Cliente/Catalogo.jsp").forward(request, response);
+        
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
-        PrintWriter out = response.getWriter();
-        EstampaDAO estDAO = new EstampaDAO();
-        List<Estampa> estP = estDAO.obtenListaEstampas();
-        request.setAttribute("estP", estP);
-        request.getRequestDispatcher("Cliente/Catalogo.jsp").forward(request, response);
-        
+
     }
 
     @Override

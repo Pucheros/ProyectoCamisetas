@@ -13,17 +13,7 @@
             <div class="container">
                 <div class="navbar-header">                    
                     <a class="navbar-brand" href="..\index.html"><span>Arquitectura de datos</span></a>
-                </div>
-                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="active">
-                            <a href="..\index.html">Inicio</a>
-                        </li>
-                        <li>
-                            <a href="#">Contacts</a>
-                        </li>
-                    </ul>
-                </div>
+                </div>                
             </div>
         </div>
         <div class="section">

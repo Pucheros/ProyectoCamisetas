@@ -121,9 +121,7 @@ CREATE TABLE `estampa` (
 
 INSERT INTO `estampa` (`idEstampa`, `nombre`, `descripcion`, `imagenes`, `rating`, `popularidad`, `Artista_idArtista`, `Tema_idTema`) VALUES
 (0, 'Chat', 'Globitos del chat.', 'chat.png', '4', '12', 1, 1),
-(1, 'Envelope', 'Un breve mensajesito.', 'envelope.png', '3', '10', 1, 1),
-(2, 'Headset', 'Unos audifonos.', 'headset.png', '5', '17', 1, 1),
-(3, 'Imac', 'Una super pc.', 'imac.png', '5', '100', 1, 1);
+(1, 'Envelope', 'Un breve mensajesito.', 'envelope.png', '3', '10', 1, 1);
 
 -- --------------------------------------------------------
 

@@ -11,6 +11,7 @@ import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -38,8 +39,8 @@ public class Ingresar extends HttpServlet {
         String clave = request.getParameter("clave");
         int tForm = Integer.parseInt(request.getParameter("tForm"));
         HttpSession session = request.getSession();
-        String tipo = (String) session.getAttribute("type");
-        if (session.getAttribute("type") != null) {
+        if (session.getAttribute("type") != null && !session.getAttribute("type").equals("out")) {
+            String tipo = (String) session.getAttribute("type");
             if (tipo.equals("Cliente")) {
                 response.sendRedirect("Cliente/indexCli.jsp");
             } else if (tipo.equals("Artista")) {
@@ -57,9 +58,11 @@ public class Ingresar extends HttpServlet {
                             session.setAttribute("id", a.getIdArtista());
                             session.setAttribute("name", name);
                             session.setAttribute("type", "Artista");
+                            Cookie ck = new Cookie("name", name);
+                            response.addCookie(ck);
                             response.sendRedirect("Artista/indexArt.jsp");
-                        } else {                            
-                           // response.sendRedirect("Artista/IngresarArtista.jsp");
+                        } else {
+                            // response.sendRedirect("Artista/IngresarArtista.jsp");
                         }
                     }
                 }
@@ -71,9 +74,11 @@ public class Ingresar extends HttpServlet {
                             session.setAttribute("id", a.getIdCliente());
                             session.setAttribute("name", name);
                             session.setAttribute("type", "Cliente");
+                            Cookie ck = new Cookie("name", name);
+                            response.addCookie(ck);
                             response.sendRedirect("Cliente/indexCli.jsp");
                         } else {
-                           // response.sendRedirect("Cliente/IngresarCliente.jsp");
+                            // response.sendRedirect("Cliente/IngresarCliente.jsp");
                         }
                     }
                 }
@@ -85,9 +90,11 @@ public class Ingresar extends HttpServlet {
                             session.setAttribute("id", a.getIdAdministrador());
                             session.setAttribute("name", name);
                             session.setAttribute("type", "Administrador");
-                            response.sendRedirect("indexAdm.jsp");
+                            Cookie ck = new Cookie("name", name);
+                            response.addCookie(ck);
+                            response.sendRedirect("Administrador/indexAdm.jsp");
                         } else {
-                           // response.sendRedirect("Administrador/IngresarAdministrador.jsp");
+                            // response.sendRedirect("Administrador/IngresarAdministrador.jsp");
                         }
                     }
                 }

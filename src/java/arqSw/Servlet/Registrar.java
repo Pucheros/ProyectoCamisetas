@@ -67,7 +67,6 @@ public class Registrar extends HttpServlet {
                 id = admDAO.guardaAdministrador(adm);
                 break;
             }
-
         }
         if (id != 0) {
             if (tForm != 3) {

@@ -11,25 +11,35 @@
         <link href="../css/style.css"
               rel="stylesheet" type="text/css">
         <link href="css\style.css" rel="stylesheet" type="text/css">
-        <div class="section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-right">
-                        <div class="btn-group btn-group-lg">
-                            <a class="btn btn-success dropdown-toggle" data-toggle="dropdown"> Opciones <span class="fa fa-caret-down"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li>
-                                    <a href="../setPass.jsp" class="active btn btn-lg btn-default" data-toggle="modal">Cambiar Contraseña</a>
-                                </li>
-                                <li class="divider"></li>
-                                <li>
-                                    <a href="../Salir" class="active btn btn-lg btn-danger" data-toggle="modal">Salir</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class= "navbar navbar-default navbar-static-top ">  
+            <div class= "container ">  
+                <div class= "navbar-header ">  
+                    <button type= "button " class= "navbar-toggle " data-toggle= "collapse " data-target= "#navbar-ex-collapse ">  
+                        <span class= "sr-only ">Toggle navigation</span>  
+                        <span class= "icon-bar "></span>  
+                        <span class= "icon-bar "></span>  
+                        <span class= "icon-bar "></span>  
+                    </button>  
+                    <a class= "navbar-brand " href= "indexCli.jsp"><span>Cliente</span><br></a>  
+                </div>  
+                <div class= "collapse navbar-collapse " id= "navbar-ex-collapse ">  
+                    <ul class= "nav navbar-nav navbar-right ">  
+                        <li class= "active ">  
+                            <a href= "indexCli.jsp">Inicio<br></a>  
+                        </li>  
+                        <li>  
+                            <a href= "../EstampaServlet">Catalogo<br></a>                             
+                        </li>                                                
+                        <li>
+                            <a href="../setPass.jsp">Cambiar Contraseña</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="../Salir" >Salir</a>
+                        </li>
+                    </ul>  
+                </div>  
+            </div>  
         </div>
         <div class="cover">
             <div class="container">
@@ -43,9 +53,7 @@
                 <div class="row">
                     <div class="text-center" class="col-md-12">
                         <p>Mira nuestras estampas.</p>
-                        <form action="../EstampaServlet" method="post" >
-                            <input type="submit" value="Catálogo" class="btn btn-success">
-                        </form>
+                        <a href= "../EstampaServlet">Catalogo<br></a> 
                     </div>
                     
                 </div>

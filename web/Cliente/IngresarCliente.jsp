@@ -7,24 +7,7 @@
         <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="..\css\style.css" rel="stylesheet" type="text/css">
     </head><body>
-        <div class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">                    
-                    <a class="navbar-brand" href="..\index.html"><span>Arquitectura de datos</span></a>
-                </div>
-                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="active">
-                            <a href="..\index.html">Inicio</a>
-                        </li>
-                        <li>
-                            <a href="#">Contacts</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="section">
+         <div class="section">
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">

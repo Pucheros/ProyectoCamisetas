@@ -5,8 +5,15 @@
  */
 package arqSw.Servlet;
 
+import arqSw.DAO.ArtistaDAO;
+import arqSw.DAO.ClienteDAO;
+import arqSw.DAO.EstampaDAO;
+import arqSw.Hibernate.Artista;
+import arqSw.Hibernate.Cliente;
+import arqSw.Hibernate.Estampa;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -21,70 +28,86 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "Usuarios", urlPatterns = {"/Usuarios"})
 public class Usuarios extends HttpServlet {
 
-    /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
     }
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /**
-     * Handles the HTTP <code>GET</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
 
-        int tForm = Integer.parseInt(request.getParameter("tForm"));
-        switch (tForm) {
-            case 1:
-                
-                break;
-            case 2:
-                
-                break;
-            case 3:
-                
-                break;
-            case 4:
-                
-                break;                 
-        }
     }
 
-    /**
-     * Handles the HTTP <code>POST</code> method.
-     *
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
+
+        int tForm = Integer.parseInt(request.getParameter("tForm"));
+        ClienteDAO cliDAO = new ClienteDAO();
+        ArtistaDAO artDAO = new ArtistaDAO();
+        switch (tForm) {
+            case 1:
+                List<Cliente> listaClientes = cliDAO.obtenListaClientes();
+                List<Artista> listaArtistas = artDAO.obtenListaArtistas();
+                request.setAttribute("listaClientes", listaClientes);
+                request.setAttribute("listaArtistas", listaArtistas);
+                request.getRequestDispatcher("Administrador/VerUsuarios.jsp").forward(request, response);
+                break;
+            case 2:
+                int tAC = Integer.parseInt(request.getParameter("id"));
+
+                Cliente cliente = cliDAO.obtenCliente(tAC);
+                if (request.getParameter("usuario") != null) {
+                    String usuario = request.getParameter("usuario");
+                    cliente.setUsuario(usuario);
+                }
+                if (request.getParameter("clave") != null) {
+                    String clave = request.getParameter("clave");
+                    cliente.setClave(clave);
+                }
+                if (request.getParameter("formaPago") != null) {
+                    String formaPago = request.getParameter("formaPago");
+                    cliente.setFormaPago(formaPago);
+                }
+                if (request.getParameter("ubicacion") != null) {
+                    String ubicacion = request.getParameter("ubicacion");
+                    cliente.setUbicacion(ubicacion);
+                }
+                cliDAO.actualizaCliente(cliente);
+                response.sendRedirect("Administrador/indexAdm.jsp");
+                break;
+            case 3:
+               int tAA = Integer.parseInt(request.getParameter("id"));
+
+                Artista artist = artDAO.obtenArtista(tAA);
+                if (request.getParameter("usuario") != null) {
+                    String usuario = request.getParameter("usuario");
+                    artist.setUsuario(usuario);
+                }
+                if (request.getParameter("clave") != null) {
+                    String clave = request.getParameter("clave");
+                    artist.setClave(clave);
+                }               
+                artDAO.actualizaArtista(artist);
+                response.sendRedirect("Administrador/indexAdm.jsp");               
+                break;
+            case 4:
+                int tE = Integer.parseInt(request.getParameter("id"));
+                if(request.getParameter("tipo").equals("Cliente")){
+                    Cliente clien = cliDAO.obtenCliente(tE);
+                    cliDAO.eliminaCliente(clien);                    
+                }else{
+                    Artista artis = artDAO.obtenArtista(tE);
+                    artDAO.eliminaArtista(artis);
+                }
+                break;
+        }
+
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
     @Override
     public String getServletInfo() {
         return "Short description";
