@@ -51,20 +51,7 @@
                             <div class="text-center thumbnail">
                                 <img src="img/estampas/Comunicacion/${estampas.imagenes}" class="img-responsive">
                                 <div class="caption">
-                                    <div class="row">
-                                        <sql:setDataSource var="snapshot" driver="com.mysql.jdbc.Driver" url="jdbc:mysql://localhost/mydb" user="root"  password=""/>
-                                        <sql:query dataSource="${snapshot}" var="result">
-                                            SELECT descripcion from tema WHERE idTema = 1;
-                                        </sql:query>
-                                            
-                                        <div class="col-md-4 text-center">
-                                            <c:forEach var="row" items="${result.rows}">
-                                                <p>Tema:<br></p>${row}
-                                            </c:forEach>
-                                            
-
-
-
+                                    <div class="row">                  
                                         </div>
                                         <div class="col-md-4 text-center">
 
