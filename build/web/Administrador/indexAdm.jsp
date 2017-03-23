@@ -52,7 +52,7 @@
                     <div class="col-md-3">
                         <img src="..\img\Administrador\new-user.png" class="img-responsive">
                         <hr>
-                        <a class="btn btn-block btn-primary" href="RegistrarAdministrador.html">Agregar Administrador<br></a>
+                        <a class="btn btn-block btn-primary" href="RegistrarAdministrador.jsp">Agregar Administrador<br></a>
                     </div>
                     <div class="col-md-3">
                         <img src="..\img\Administrador\forum-user.png" class="img-responsive">

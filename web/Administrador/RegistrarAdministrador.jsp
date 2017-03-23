@@ -6,28 +6,38 @@
         <link href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="..\css\style.css" rel="stylesheet" type="text/css">
     </head><body>
-        <div class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar-ex-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="..\index.html"><span>Arquitectura de datos</span></a>
-                </div>
-                <div class="collapse navbar-collapse" id="navbar-ex-collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="active">
-                            <a href="..\index.html">Inicio</a>
-                        </li>
+        <div class= "navbar navbar-default navbar-static-top ">  
+            <div class= "container ">  
+                <div class= "navbar-header ">  
+                    <button type= "button " class= "navbar-toggle " data-toggle= "collapse " data-target= "#navbar-ex-collapse ">  
+                        <span class= "sr-only ">Toggle navigation</span>  
+                        <span class= "icon-bar "></span>  
+                        <span class= "icon-bar "></span>  
+                        <span class= "icon-bar "></span>  
+                    </button>  
+                    <a class= "navbar-brand " href= "# "><span>Administrador</span><br></a>  
+                </div>  
+                <div class= "collapse navbar-collapse " id= "navbar-ex-collapse ">  
+                    <ul class= "nav navbar-nav navbar-right ">  
+                        <li class= "active ">  
+                            <a href= "indexAdm.jsp">Usuarios<br></a>  
+                        </li>  
+                        <li>  
+                            <a href= "temasAdm.jsp">Temas<br></a>  
+                        </li>  
+                        <li>  
+                            <a href= "../EstampaServlet">Catalogo<br></a>                             
+                        </li>  
                         <li>
-                            <a href="#">Contacts</a>
+                            <a href="../setPass.jsp">Cambiar Contraseña</a>
                         </li>
-                    </ul>
-                </div>
-            </div>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="../Salir" >Salir</a>
+                        </li>
+                    </ul>  
+                </div>  
+            </div>  
         </div>
         <div class="section">
             <div class="container">

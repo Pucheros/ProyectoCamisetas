@@ -62,9 +62,10 @@ public class Ingresar extends HttpServlet {
                             response.addCookie(ck);
                             response.sendRedirect("Artista/indexArt.jsp");
                         } else {
-                            // response.sendRedirect("Artista/IngresarArtista.jsp");
+//                            response.sendRedirect("error.html");
                         }
                     }
+                    response.sendRedirect("error.html");
                 }
                 case 2: {
                     ClienteDAO cliDAO = new ClienteDAO();
@@ -81,6 +82,7 @@ public class Ingresar extends HttpServlet {
                             // response.sendRedirect("Cliente/IngresarCliente.jsp");
                         }
                     }
+                    response.sendRedirect("error.html");
                 }
                 case 3: {
                     AdministradorDAO admDAO = new AdministradorDAO();
@@ -97,6 +99,7 @@ public class Ingresar extends HttpServlet {
                             // response.sendRedirect("Administrador/IngresarAdministrador.jsp");
                         }
                     }
+                    response.sendRedirect("error.html");
                 }
             }
         }

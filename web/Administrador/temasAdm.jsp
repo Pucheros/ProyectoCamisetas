@@ -21,10 +21,10 @@
                 </div>  
                 <div class= "collapse navbar-collapse " id= "navbar-ex-collapse ">  
                     <ul class= "nav navbar-nav navbar-right ">  
-                        <li class= "active ">  
+                        <li>  
                             <a href= "indexAdm.jsp">Usuarios<br></a>  
                         </li>  
-                        <li>  
+                        <li  class= "active ">  
                             <a href= "temasAdm.jsp">Temas<br></a>  
                         </li>  
                         <li>  
@@ -47,25 +47,25 @@
                     <div class="col-md-3">
                         <img src="../img/Administrador/paint-board-and-brush.png" class="img-responsive">
                         <hr>
-                        <a class="btn btn-block btn-primary" href="AgregarTema.html">Agregar Temas<br></a>
+                        <a class="btn btn-block btn-primary" href="AgregarTema.jsp">Agregar Temas<br></a>
                     </div>
                     <div class="col-md-3">
                         <img src="../img/Administrador/painter-palette.png" class="img-responsive">   
                         <hr>
                         <form action="../Temas" method="post" >
-                            <input type="text" value="5" name="tForm" hidden>
+                            <input type="text" value="2" name="tForm" hidden>
                             <input type="submit" value="Ver Temas" class="btn btn-block btn-primary">
                         </form>
                     </div>
                     <div class="col-md-3">
                         <img src="../img/Administrador/theatre-masks.png" class="img-responsive img-rounded">
                         <hr>
-                        <a class="btn btn-block btn-primary">Actualizar Temas<br></a>
+                        <a class="btn btn-block btn-primary" href="ActualizarTema.jsp">Actualizar Temas<br></a>
                     </div>
                     <div class="col-md-3">
                         <img src="../img/Administrador/eraser.png" class="img-responsive">
                         <hr>
-                        <a class="btn btn-block btn-primary">Eliminar Temas<br></a>
+                        <a class="btn btn-block btn-primary" href="BorrarTema.jsp">Eliminar Temas<br></a>
                     </div>
                 </div>
             </div>

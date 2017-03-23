@@ -26,19 +26,25 @@
                         <span class= "icon-bar "></span>  
                         <span class= "icon-bar "></span>  
                     </button>  
-                    <a class= "navbar-brand " href= "indexCli.jsp"><span>Cliente</span><br></a>  
+                    <a class= "navbar-brand " href= "# "><span>Administrador</span><br></a>  
                 </div>  
                 <div class= "collapse navbar-collapse " id= "navbar-ex-collapse ">  
                     <ul class= "nav navbar-nav navbar-right ">  
                         <li class= "active ">  
-                            <a href= "indexCli.jsp">Inicio<br></a>  
-                        </li>                                                                       
+                            <a href= "Administrador/indexAdm.jsp">Usuarios<br></a>  
+                        </li>  
+                        <li>  
+                            <a href= "Administrador/temasAdm.jsp">Temas<br></a>  
+                        </li>  
+                        <li>  
+                            <a href= "EstampaServlet">Catalogo<br></a>                             
+                        </li>  
                         <li>
-                            <a href="../setPass.jsp">Cambiar Contraseña</a>
+                            <a href="setPass.jsp">Cambiar Contraseña</a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="../Salir" >Salir</a>
+                            <a href="Salir" >Salir</a>
                         </li>
                     </ul>  
                 </div>  

@@ -25,21 +25,21 @@
                 </div>  
                 <div class= "collapse navbar-collapse " id= "navbar-ex-collapse ">  
                     <ul class= "nav navbar-nav navbar-right ">  
-                        <li class= "active ">  
-                            <a href= "indexAdm.jsp">Usuarios<br></a>  
+                        <li>  
+                            <a href= "Administrador/indexAdm.jsp">Usuarios<br></a>  
+                        </li>  
+                        <li  class= "active ">  
+                            <a href= "Administrador/temasAdm.jsp">Temas<br></a>  
                         </li>  
                         <li>  
-                            <a href= "temasAdm.jsp">Temas<br></a>  
-                        </li>  
-                        <li>  
-                            <a href= "../EstampaServlet">Catalogo<br></a>                             
+                            <a href= "EstampaServlet">Catalogo<br></a>                             
                         </li>  
                         <li>
-                            <a href="../setPass.jsp">Cambiar Contraseña</a>
+                            <a href="setPass.jsp">Cambiar Contraseña</a>
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="../Salir" >Salir</a>
+                            <a href="Salir" >Salir</a>
                         </li>
                     </ul>  
                 </div>  

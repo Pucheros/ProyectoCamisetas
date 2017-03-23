@@ -37,31 +37,30 @@ public class Temas extends HttpServlet {
 
         TemaDAO tem = new TemaDAO();
         int tForm = Integer.parseInt(request.getParameter("tForm"));
-            switch (tForm) {
-                case 1:
-                    String nombre = request.getParameter("nombre");
-                    Tema temaNuevo = new Tema(nombre, null);
-                    tem.guardaTema(temaNuevo);
+        switch (tForm) {
+            case 1:
+                String nombre = request.getParameter("nombre");
+                Tema temaNuevo = new Tema(nombre, null);
+                tem.guardaTema(temaNuevo);
+                response.sendRedirect("Administrador/temasAdm.jsp");
+                break;
+            case 2:
+                List<Tema> listaTemas = tem.obtenListaTemas();
+                request.setAttribute("listaTemas", listaTemas);
+                request.getRequestDispatcher("Administrador/temas.jsp").forward(request, response);
+                break;
+            case 3:
+                Tema temaActualizar = tem.obtenTema(Integer.parseInt(request.getParameter("id")));
+                temaActualizar.setDescripcion(request.getParameter("nombre"));
+                tem.actualizaTema(temaActualizar);
+                response.sendRedirect("Administrador/temasAdm.jsp");
+                break;
+            case 4:
+                Tema temaBorrar = tem.obtenTema(Integer.parseInt(request.getParameter("id")));
+                tem.eliminaTema(temaBorrar);
+                response.sendRedirect("Administrador/temasAdm.jsp");
+                break;
+        }
 
-                    break;
-                case 2:
-
-                    break;
-                case 3:
-                    Tema temaActualizar = tem.obtenTema(0);
-                    temaActualizar.setDescripcion("Algo");
-                    tem.actualizaTema(temaActualizar);
-                    break;
-                case 4:
-                    Tema temaBorrar = tem.obtenTema(0);
-                    tem.eliminaTema(temaBorrar);
-                    break;
-                case 5:
-                    List<Tema> listaTemas = tem.obtenListaTemas();
-                    request.setAttribute("listaTemas", listaTemas);
-                    request.getRequestDispatcher("Administrador/temas.jsp").forward(request, response);
-                    break;
-            }
-        
     }
 }
