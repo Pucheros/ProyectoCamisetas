@@ -65,50 +65,49 @@
             </div>
         </div>        
         <%
-                String idEst = request.getParameter("idEst");
-                String nombreEst = request.getParameter("NombreEst-" + idEst);
-                String img = request.getParameter("Img-" + idEst);
-                String descripcionEst = request.getParameter("DescripcionEst" + idEst);
-                int idTema = Integer.parseInt(request.getParameter("TemaEst" + idEst));
-                String ratingEst=request.getParameter("Rating"+idEst);
-                String Popularidad=request.getParameter("Popularidad"+idEst);
+            String idEst = request.getParameter("idEst");
+            String nombreEst = request.getParameter("NombreEst-" + idEst);
+            String img = request.getParameter("Img-" + idEst);
+            String descripcionEst = request.getParameter("DescripcionEst" + idEst);
+            int idTema = Integer.parseInt(request.getParameter("TemaEst" + idEst));
+            String ratingEst = request.getParameter("Rating" + idEst);
+            String Popularidad = request.getParameter("Popularidad" + idEst);
+            String src = request.getParameter("Img-" + idEst);
+            TemaDAO temDAO = new TemaDAO();
+            Tema tema = temDAO.obtenTema(idTema);
+            String descripTema = tema.getDescripcion();
 
-                TemaDAO temDAO = new TemaDAO();
-                Tema tema = temDAO.obtenTema(idTema);
-                String descripTema = tema.getDescripcion();
+               // String src = "../img/estampas/" + descripTema + "/" + img;
+            out.println("<form action=\"../AdministrarEstampa\" method=\"post\" > <br>\n"
+                    + "<input type=\"text\" name=\"idEst\" value=\"" + idEst + "\" hidden>\n"
+                    + "<select name=\"admEst\" class=\"form-control\">\n"
+                    + "<option value=\"2\" selected> Actualizar </option>\n"
+                    + "<option value=\"3\"> Eliminar </option>\n"
+                    + "<div class=\"text-center thumbnail\">"
+                    + " <label for=\"inputNombreEst\" class=\"control-label\">Nombre:</label>\n"
+                    + " <input type=\"text\" class=\"form-control\" name=\"nombreEst\" value=\"" + nombreEst + " \" >\n"
+                    + " <input type=\"file\" class=\"form-control\" name=\"FileEst\" value=\"" + img + " \" >\n"
+                    + "<img src=\"" + src + "\" class=\"img-responsive\">\n"
+                    + "<label for=\"inputDescripcionEst\" class=\"control-label\">Descripcion:</label>\n"
+                    + "<input type=\"text\" class=\"form-control\" name=\"descripcionEst\" value=\"" + descripcionEst + " \" >\n"
+                    + "<label for=\"inputTema\" class=\"control-label\">Tema</label>\n"
+                    + "<select name=\"temaEst\" class=\"form-control\">\n");
 
-                String src = "img/estampas/" + descripTema + "/" + img;
+            List<Tema> temL = temDAO.obtenListaTemas();
 
-                out.println("<form action=\"../AdministrarEstampa\" method=\"post\" > <br>\n"
-                        + "<input type=\"text\" name=\"idEst\" value=\""+idEst+"\" hidden>\n"
-                        + "<select name=\"admEst\" class=\"form-control\">\n"                       
-                        + "<option value=\"2\" selected> Actualizar </option>\n"
-                        + "<option value=\"3\"> Eliminar </option>\n"
-                        + "<div class=\"text-center thumbnail\">"
-                        + " <label for=\"inputNombreEst\" class=\"control-label\">Nombre:</label>\n"
-                        + " <input type=\"text\" class=\"form-control\" name=\"nombreEst\" value=\"" + nombreEst + " \" >\n"
-                        + " <input type=\"file\" class=\"form-control\" name=\"FileEst\" value=\"" + img + " \" >\n"
-                        + "<img src=\"" + src + "\" class=\"img-responsive\">\n"
-                        + "<label for=\"inputDescripcionEst\" class=\"control-label\">Descripcion:</label>\n"
-                        + "<input type=\"text\" class=\"form-control\" name=\"descripcionEst\" value=\"" + descripcionEst + " \" >\n"
-                        + "<label for=\"inputTema\" class=\"control-label\">Tema</label>\n"
-                        + "<select name=\"temaEst\" class=\"form-control\">\n");                
-
-                List<Tema> temL = temDAO.obtenListaTemas();
-
-                for (int j = 0; j < temL.size(); j++) {
-                    Integer idTem = temL.get(j).getIdTema();
-                    String descriTemaOption = temL.get(j).getDescripcion();
-                    if (idTem == idTema) {
-                        out.println("<option value=" + idTem + " selected> " + descriTemaOption + " </option>");
-                    } else {
-                        out.println("<option value=" + idTem + "> " + descriTemaOption + " </option>");
-                    }
+            for (int j = 0; j < temL.size(); j++) {
+                Integer idTem = temL.get(j).getIdTema();
+                String descriTemaOption = temL.get(j).getDescripcion();
+                if (idTem == idTema) {
+                    out.println("<option value=" + idTem + " selected> " + descriTemaOption + " </option>");
+                } else {
+                    out.println("<option value=" + idTem + "> " + descriTemaOption + " </option>");
                 }
-                out.println("</select>\n"
-                        + "<button type=\"submit\" class=\"btn btn-default\">Hecho</button><br>\n"
-                        + "</form>\n"
-                        + " </div>\n");       
+            }
+            out.println("</select>\n"
+                    + "<button type=\"submit\" class=\"btn btn-default\">Hecho</button><br>\n"
+                    + "</form>\n"
+                    + " </div>\n");
         %>
     </body>
 </html>

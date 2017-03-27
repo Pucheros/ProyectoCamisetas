@@ -99,6 +99,7 @@ public class AdministrarEstampa extends HttpServlet {
                 est= new Estampa(t, a, nombre, descripcion, imagen, "", "", null);
 
                 id = estDAO.guardaEstampa(est);
+                response.sendRedirect("Artista/indexArt.jsp");
                 break;
             }
             case 2: {
@@ -112,6 +113,7 @@ public class AdministrarEstampa extends HttpServlet {
                 est.setTema(t);
                 est.setArtista(a);                                
                 estDAO.actualizaEstampa(est);
+                  response.sendRedirect("Artista/indexArt.jsp");
                 break;
             }
             case 3: {
@@ -119,6 +121,7 @@ public class AdministrarEstampa extends HttpServlet {
                 int idEst = Integer.parseInt(request.getParameter("idEst"));
                 est = estDAO.obtenEstampa(idEst);
                 estDAO.eliminaEstampa(est);
+                  response.sendRedirect("Artista/indexArt.jsp");
 
             }
         }

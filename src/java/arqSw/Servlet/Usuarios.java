@@ -27,24 +27,24 @@ import javax.servlet.http.HttpSession;
  */
 @WebServlet(name = "Usuarios", urlPatterns = {"/Usuarios"})
 public class Usuarios extends HttpServlet {
-
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+        
     }
-
+    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-
+        
     }
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         processRequest(request, response);
-
+        
         int tForm = Integer.parseInt(request.getParameter("tForm"));
         ClienteDAO cliDAO = new ClienteDAO();
         ArtistaDAO artDAO = new ArtistaDAO();
@@ -58,7 +58,7 @@ public class Usuarios extends HttpServlet {
                 break;
             case 2:
                 int tAC = Integer.parseInt(request.getParameter("id"));
-
+                
                 Cliente cliente = cliDAO.obtenCliente(tAC);
                 if (request.getParameter("usuario") != null) {
                     String usuario = request.getParameter("usuario");
@@ -80,8 +80,8 @@ public class Usuarios extends HttpServlet {
                 response.sendRedirect("Administrador/indexAdm.jsp");
                 break;
             case 3:
-               int tAA = Integer.parseInt(request.getParameter("id"));
-
+                int tAA = Integer.parseInt(request.getParameter("id"));
+                
                 Artista artist = artDAO.obtenArtista(tAA);
                 if (request.getParameter("usuario") != null) {
                     String usuario = request.getParameter("usuario");
@@ -90,24 +90,36 @@ public class Usuarios extends HttpServlet {
                 if (request.getParameter("clave") != null) {
                     String clave = request.getParameter("clave");
                     artist.setClave(clave);
-                }               
+                }
                 artDAO.actualizaArtista(artist);
-                response.sendRedirect("Administrador/indexAdm.jsp");               
+                response.sendRedirect("Administrador/indexAdm.jsp");
                 break;
             case 4:
                 int tE = Integer.parseInt(request.getParameter("id"));
-                if(request.getParameter("tipo").equals("Cliente")){
+                if (request.getParameter("tipo").equals("Cliente")) {
                     Cliente clien = cliDAO.obtenCliente(tE);
-                    cliDAO.eliminaCliente(clien);                    
-                }else{
+                    cliDAO.eliminaCliente(clien);
+                } else {
                     Artista artis = artDAO.obtenArtista(tE);
+                    
+                    EstampaDAO estDAO = new EstampaDAO();
+                    List<Estampa> estL = estDAO.obtenListaEstampas();
+                    
+                    for (int i = 0; i < estL.size(); i++) {                        
+                        Artista a = estL.get(i).getArtista();
+                        int idArtistaEst = a.getIdArtista();
+                        
+                        if (artis.getIdArtista() == idArtistaEst) {                           
+                            estDAO.eliminaEstampa(estL.get(i));
+                        }
+                    }
                     artDAO.eliminaArtista(artis);
-                }
+                }                
+                response.sendRedirect("Administrador/indexAdm.jsp");
                 break;
-        }
-
+        }        
     }
-
+    
     @Override
     public String getServletInfo() {
         return "Short description";

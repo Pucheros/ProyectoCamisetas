@@ -19,16 +19,26 @@
                 <div class="row">
                     <div class="col-md-12 text-right">
                         <div class="btn-group btn-group-lg">
-                            <a class="btn btn-success dropdown-toggle" data-toggle="dropdown"> Opciones <span class="fa fa-caret-down"></span></a>
+                            <a class="btn btn-success dropdown-toggle" data-toggle="dropdown"> Opciones <span class="fa fa-caret-down"></span></a>                           
+                            
                             <ul class="dropdown-menu" role="menu">
                                 <li>
-                                    <a href="../setPass.jsp" class="active btn btn-lg btn-default" data-toggle="modal">Cambiar Contraseña</a>
+                                    <a href="../setPass.jsp" class="active btn btn-lg btn-default" data-toggle="modal">Cambiar ContraseÃ±a</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li >
+                                    <a href="RegistrarEstampa.jsp">Registrar Estampas</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a href="MostrarEstampaArtista.jsp">Mostrar Estampas</a>
                                 </li>
                                 <li class="divider"></li>
                                 <li>
                                     <a href="../Salir" class="active btn btn-lg btn-danger" data-toggle="modal">Salir</a>
                                 </li>
                             </ul>
+                            
                         </div>
                     </div>
                 </div>

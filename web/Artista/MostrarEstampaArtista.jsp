@@ -60,12 +60,13 @@
                     <div class="col-md-12"> 
 
                         <%
+                            
                             EstampaDAO estDAO = new EstampaDAO();
                             List<Estampa> estL = estDAO.obtenListaEstampas();
                             session = request.getSession();
                             int idArtistaSesion = Integer.parseInt(session.getAttribute("id").toString());
                             for (int i = 0; i < estL.size(); i++) {
-
+                                
                                 Artista a = estL.get(i).getArtista();
                                 int idArtista1 = a.getIdArtista();
                                 ArtistaDAO artDAO = new ArtistaDAO();
@@ -86,7 +87,7 @@
                                     Tema tema = temDAO.obtenTema(idTema1);
                                     String descripTema = tema.getDescripcion();
 
-                                    String src = "img/estampas/" + descripTema + "/" + imagen;
+                                    String src = "../img/estampas/" + descripTema + "/" + imagen;
 
                                     out.println("<div class=\"text-center thumbnail\">\n"
                                             + "<form action=\"EditarEliminarEstampa.jsp\" method=\"post\" > <br>\n"
